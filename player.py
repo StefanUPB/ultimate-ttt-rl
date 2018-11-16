@@ -58,6 +58,7 @@ class RLTTTPlayer(TTTPlayer):
             pickOne = random.choice(emptyPlaces)
             if random.uniform(0, 1) < 0.8:      # Make a random move with probability 0.2
                 moveChoices = {}
+                # get board state value for all possible choices from learning algorithm and choose best one
                 for (i, j) in emptyPlaces:
                     possibleNextState = self.testNextMove(previousState, i, j)
                     moveChoices[(i, j)] = self.learningAlgo.getBoardStateValue(self.player, self.board, possibleNextState)
